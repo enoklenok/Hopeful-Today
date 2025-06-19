@@ -1,0 +1,16 @@
+@import '@styles/variables.scss';
+
+.app-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+}
+
+.section-container {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  max-width: 500px;
+  background-color: $white;
+}

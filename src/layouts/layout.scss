@@ -1,0 +1,24 @@
+@import '@styles/variables.scss';
+
+.topInfo-container {
+  display: flex;
+  flex-direction: column;
+  flex: 2;
+  align-items: end;
+  border: 1px solid $black;
+}
+
+.character-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 3;
+  border: 1px solid $black;
+}
+
+.bottomInfo-container {
+  display: flex;
+  flex: 1;
+  border: 1px solid $black;
+}
