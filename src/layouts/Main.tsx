@@ -1,6 +1,6 @@
 import { TopInfo, Character, BottomInfo } from '@layouts';
 
-import './index.scss';
+import '@layouts/index.scss';
 
 const Main = () => {
   return (

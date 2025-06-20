@@ -1,3 +1,5 @@
+@use 'pretendard/dist/web/variable/pretendardvariable.css';
+
 /* reset */
 * {
   margin: 0;
@@ -5,20 +7,28 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   width: 100%;
   height: 100%;
-  font-family: sans-serif;
+  font-family: 'Pretendard Variable', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-img, picture, video, canvas, svg {
+img,
+picture,
+video,
+canvas,
+svg {
   display: block;
   max-width: 100%;
 }
 
-input, button, textarea, select {
+input,
+button,
+textarea,
+select {
   font: inherit;
   border: none;
   background: none;
