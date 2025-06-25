@@ -18,10 +18,11 @@ export const getCurrentWeather = async () => {
     const dataType = 'JSON'; // 옵션 - 응답 자료 형식
 
     const currentWeatherUrl = `${BASE_URL}/${params}?serviceKey=${API_KEY}&pageNo=${pageNo}&numOfRows=${numOfRows}&base_date=${base_date}&base_time=${baes_time}&nx=${nx}&ny=${ny}&dataType=${dataType}`;
-    const response = await axios.get(currentWeatherUrl);
-    return response;
+    const { data } = await axios.get(currentWeatherUrl);
+    return data;
   } catch (error) {
     console.log(`getCurrentWeather error : ${error?.message}`);
+    throw error;
   }
 };
 
@@ -39,10 +40,11 @@ export const getHourlyForecast = async () => {
     const dataType = 'JSON'; // 옵션 - 응답 자료 형식
 
     const hourlyForecastUrl = `${BASE_URL}/${params}?serviceKey=${API_KEY}&pageNo=${pageNo}&numOfRows=${numOfRows}&base_date=${base_date}&base_time=${base_time}&nx=${nx}&ny=${ny}&dataType=${dataType}`;
-    const response = await axios.get(hourlyForecastUrl);
-    return response;
+    const { data } = await axios.get(hourlyForecastUrl);
+    return data;
   } catch (error) {
     console.log(`getHourlyForecast error : ${error?.message}`);
+    throw error;
   }
 };
 
@@ -59,9 +61,10 @@ export const getWeeklyForecast = async () => {
     const dataType = 'JSON'; // 옵션 - 응답 자료 형식
 
     const weeklyForecastUrl = `${BASE_URL}/${params}?serviceKey=${API_KEY}&pageNo=${pageNo}&numOfRows=${numOfRows}&base_date=${base_date}&base_time=${base_time}&nx=${nx}&ny=${ny}&dataType=${dataType}`;
-    const response = await axios.get(weeklyForecastUrl);
-    return response;
+    const { data } = await axios.get(weeklyForecastUrl);
+    return data;
   } catch (error) {
     console.log(`getWeeklyForecast error : ${error?.message}`);
+    throw error;
   }
 };

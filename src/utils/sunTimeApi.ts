@@ -12,10 +12,11 @@ export const getSunTime = async () => {
     const locdate = '20250622'; // 필수 - 날짜
     const location = '서울'; // 필수 - 지역
     const sumTimeUrl = `${BASE_URL}?serviceKey=${API_KEY}&locdate=${locdate}&location=${location}`;
-    const response = await axios.get(sumTimeUrl);
+    const { data } = await axios.get(sumTimeUrl);
 
-    return response;
+    return data;
   } catch (error) {
     console.warn(`getSunTime error : ${error?.message}`);
+    throw error;
   }
 };

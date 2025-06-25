@@ -15,10 +15,11 @@ export const getDust = async () => {
     const pageNo = 1; // 옵션 - 페이지 번호
     const itemCode = 'PM10'; // 옵션 - 항목명
     const dustUrl = `${BASE_URL}?serviceKey=${API_KEY}&returnType=${returnType}&numOfRows=${numOfRows}&pageNo=${pageNo}&year=${year}&itemCode=${itemCode}`;
-    const response = await axios.get(dustUrl);
+    const { data } = await axios.get(dustUrl);
 
-    return response;
+    return data;
   } catch (error) {
     console.warn(`getDust error : ${error?.message}`);
+    throw error;
   }
 };
