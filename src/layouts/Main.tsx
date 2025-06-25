@@ -1,15 +1,11 @@
-import { TopInfo, Character, BottomInfo } from '@layouts';
-
-import '@layouts/index.scss';
+import { TopInfo, Character, BottomInfo } from '@components';
 
 const Main = () => {
   return (
-    <main className="app-container">
-      <section className="section-container">
-        <TopInfo />
-        <Character />
-        <BottomInfo />
-      </section>
+    <main className="px-4 py-3">
+      <TopInfo />
+      <Character />
+      <BottomInfo />
     </main>
   );
 };

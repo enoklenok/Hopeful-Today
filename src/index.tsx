@@ -1,10 +1,10 @@
-import { StrictMode } from 'react';
+// * React
 import { createRoot } from 'react-dom/client';
-import '@styles/index.scss';
-import { Main } from '@layouts';
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <Main />
-  </StrictMode>,
-);
+// * Components
+import App from './App';
+
+// * Styles
+import '@styles/index.css';
+
+createRoot(document.getElementById('root')!).render(<App />);

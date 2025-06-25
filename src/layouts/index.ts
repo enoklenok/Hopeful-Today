@@ -1,4 +1,3 @@
-export {default as BottomInfo} from '@layouts/BottomInfo';
-export {default as Character} from '@layouts/Character';
-export {default as Main} from '@layouts/Main';
-export {default as TopInfo} from '@layouts/TopInfo';
+export { default as Header } from '@layouts/Header';
+export { default as Main } from '@layouts/Main';
+export { default as Footer } from '@layouts/Footer';

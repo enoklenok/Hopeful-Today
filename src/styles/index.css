@@ -1,7 +1,7 @@
-@use 'pretendard/dist/web/variable/pretendardvariable.css';
+@import 'tailwindcss';
 
 /* reset */
-* {
+/* * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -33,4 +33,4 @@ select {
   border: none;
   background: none;
   outline: none;
-}
+} */
