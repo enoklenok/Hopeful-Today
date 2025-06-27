@@ -6,9 +6,9 @@ import {
   getCurrentWeather,
   getHourlyForecast,
   getWeeklyForecast,
-} from '@utils/weatherApi';
-import { getSunTime } from '@utils/sunTimeApi';
-import { getDust } from '@utils/dustApi';
+} from '@utils/api/weatherApi';
+import { getSunTime } from '@utils/api/sunTimeApi';
+import { getDust } from '@utils/api/dustApi';
 
 export const useGetCurrentWeather = () => {
   return useQuery({

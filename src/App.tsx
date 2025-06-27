@@ -20,7 +20,7 @@ const App = () => {
           <Header />
           <Main />
           <Footer />
-          <ApiTest />
+          {/* <ApiTest /> */}
         </div>
       </div>
     </QueryClientProvider>
