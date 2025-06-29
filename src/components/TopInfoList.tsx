@@ -1,19 +1,20 @@
-const TopInfoList = () => {
-  const dummyData = {
-    temperature: '14.6',
-    weather: '쾌적함',
-    findDust: '보통',
-  };
+// * Utils
+import { convertByWeatherStatus } from '@utils/utils';
 
-  const savedTemperature = localStorage.getItem('saved_temperature');
+// * Stores
+import { usePmStore } from '@stores/usePmStore';
+import { useWeatherStore } from '@stores/useWeatherStore';
+
+const TopInfoList = () => {
+  const { currentPm10Status } = usePmStore();
+  const { currentTemperature } = useWeatherStore();
+
   return (
     <div>
       <ul className="text-end">
-        <li className="text-5xl font-semibold">{savedTemperature}°C</li>
-        <li className="text-xl font-semibold text-blue-600">
-          {dummyData.weather}
-        </li>
-        <li className="text-xl text-blue-600">미세먼지 {dummyData.findDust}</li>
+        <li className="text-5xl font-semibold">{currentTemperature}°C</li>
+        <li className="text-xl">{convertByWeatherStatus(currentTemperature)}</li>
+        <li className="text-x">미세먼지 {currentPm10Status}</li>
       </ul>
     </div>
   );

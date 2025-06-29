@@ -1,7 +1,7 @@
 const Character = () => {
   return (
     <section className="flex flex-[4]">
-      <svg
+      {/* <svg
         className="w-full h-full"
         viewBox="0 0 300 300"
         preserveAspectRatio="xMidYMid meet"
@@ -18,7 +18,7 @@ const Character = () => {
           height="100%"
           preserveAspectRatio="xMidYMid meet"
         />
-      </svg>
+      </svg> */}
     </section>
   );
 };

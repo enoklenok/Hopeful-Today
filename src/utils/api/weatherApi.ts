@@ -26,7 +26,8 @@ export const getCurrentWeather = async () => {
 
     const currentWeatherUrl = `${BASE_URL}/${params}?serviceKey=${API_KEY}&pageNo=${pageNo}&numOfRows=${numOfRows}&base_date=${base_date}&base_time=${baes_time}&nx=${nx}&ny=${ny}&dataType=${dataType}`;
     const { data } = await axios.get(currentWeatherUrl);
-    return data;
+    const result = data?.response?.body?.items.item;
+    return result;
   } catch (error) {
     console.log(`getCurrentWeather error : ${error?.message}`);
     throw error;

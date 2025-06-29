@@ -31,6 +31,7 @@
       "@hooks/*": ["src/hooks/*"],
       "@layouts": ["src/layouts"],
       "@layouts/*": ["src/layouts/*"],
+      "@stores/*": ["src/stores/*"],
       "@styles/*": ["src/styles/*"],
       "@utils/*": ["src/utils/*"]
     }

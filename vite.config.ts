@@ -16,6 +16,7 @@ export default defineConfig({
       { find: '@constants', replacement: '/src/constants' },
       { find: '@hooks', replacement: '/src/hooks' },
       { find: '@layouts', replacement: '/src/layouts' },
+      { find: '@stores', replacement: '/src/stores' },
       { find: '@styles', replacement: '/src/styles' },
       { find: '@utils', replacement: '/src/utils' },
     ],

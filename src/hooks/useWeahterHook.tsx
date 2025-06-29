@@ -1,18 +1,17 @@
 // * Library
 import { useQuery } from '@tanstack/react-query';
 
+// * Stores
+import { useDistrictStore } from '@stores/useDistrictStore';
+
 // * Utils
-import {
-  getCurrentWeather,
-  getHourlyForecast,
-  getWeeklyForecast,
-} from '@utils/api/weatherApi';
-import { getSunTime } from '@utils/api/sunTimeApi';
-import { getDust } from '@utils/api/dustApi';
+import { getCurrentWeather, getHourlyForecast, getWeeklyForecast } from '@utils/api/weatherApi';
 
 export const useGetCurrentWeather = () => {
+  const { currentDistrict } = useDistrictStore();
+
   return useQuery({
-    queryKey: ['currentWeather'],
+    queryKey: ['currentWeather', currentDistrict],
     queryFn: () => getCurrentWeather(),
   });
 };
@@ -26,19 +25,5 @@ export const useGetWeeklyForecast = () => {
   return useQuery({
     queryKey: ['weeklyForecast'],
     queryFn: () => getWeeklyForecast(),
-  });
-};
-
-export const useGetSunTime = () => {
-  return useQuery({
-    queryKey: ['sunTime'],
-    queryFn: () => getSunTime(),
-  });
-};
-
-export const useGetDust = () => {
-  return useQuery({
-    queryKey: ['dust'],
-    queryFn: () => getDust(),
   });
 };

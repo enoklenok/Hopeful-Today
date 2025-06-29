@@ -4,7 +4,12 @@ import { useEffect, useState } from 'react';
 // * Constants
 import { SEOUL_DISTRICTS } from '@constants/districts';
 
+// * Stores
+import { useDistrictStore } from '@stores/useDistrictStore';
+
 const Header = () => {
+  const { setCurrentDistrict } = useDistrictStore();
+
   const savedDistrict = localStorage.getItem('select_district');
   const [selectedDistrict, setSelectedDistrict] = useState(() => {
     if (savedDistrict) {
@@ -15,16 +20,15 @@ const Header = () => {
 
   useEffect(() => {
     if (!savedDistrict) {
-      localStorage.setItem(
-        'select_district',
-        JSON.stringify(SEOUL_DISTRICTS[0]),
-      );
+      localStorage.setItem('select_district', JSON.stringify(SEOUL_DISTRICTS[0]));
     }
   });
+  /** 지역구 변경 이벤트 */
   const handleChangeDistrict = (e) => {
     const selected = SEOUL_DISTRICTS.find((gu) => gu.name === e.target.value);
     if (selected) {
       setSelectedDistrict(selected);
+      setCurrentDistrict(selected?.name);
     }
 
     localStorage.setItem('select_district', JSON.stringify(selected));
