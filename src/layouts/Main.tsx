@@ -9,7 +9,9 @@ import { useGetPm } from '@hooks/usePmHook';
 import { useGetCurrentWeather } from '@hooks/useWeahterHook';
 
 // * Utils
-import { convertByPm10Status, filterByStationName, filterByTemperate } from '@utils/utils';
+import { convertByPm10Status } from '@utils/pm/pmUtils';
+import { findByDistrict } from '@utils/pm/pmUtils';
+import { findByTemperature } from '@utils/weather/weatherUtils';
 
 // * Stores
 import { useDistrictStore } from '@stores/useDistrictStore';
@@ -26,14 +28,14 @@ const Main = () => {
 
   useEffect(() => {
     if (!isCurrentPmPending) {
-      const filteredPm10 = filterByStationName(currentPm, currentDistrict);
-      setCurrentPm10Status(convertByPm10Status(filteredPm10[0]?.pm10Value));
+      const findedPm10 = findByDistrict(currentPm, currentDistrict);
+      setCurrentPm10Status(convertByPm10Status(findedPm10?.pm10Value));
     }
   }, [currentDistrict, currentPm, isCurrentPmPending, setCurrentPm10Status]);
 
   useEffect(() => {
     if (!isCurrentWeatherPending) {
-      setCurrentTemperature(filterByTemperate(currentWeather)[0]?.obsrValue);
+      setCurrentTemperature(findByTemperature(currentWeather).obsrValue);
     }
   }, [currentWeather, isCurrentWeatherPending, setCurrentTemperature]);
 

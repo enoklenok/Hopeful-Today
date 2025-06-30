@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useDistrictStore } from '@stores/useDistrictStore';
 
 // * Utils
-import { getPm } from '@utils/api/pmApi';
+import { getPm } from '@utils/pm/pmApi';
 
 export const useGetPm = () => {
   const { currentDistrict } = useDistrictStore();

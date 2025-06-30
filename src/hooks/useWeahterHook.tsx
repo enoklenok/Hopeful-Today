@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useDistrictStore } from '@stores/useDistrictStore';
 
 // * Utils
-import { getCurrentWeather, getHourlyForecast, getWeeklyForecast } from '@utils/api/weatherApi';
+import { getCurrentWeather, getHourlyForecast, getWeeklyForecast } from '@utils/weather/weatherApi';
 
 export const useGetCurrentWeather = () => {
   const { currentDistrict } = useDistrictStore();

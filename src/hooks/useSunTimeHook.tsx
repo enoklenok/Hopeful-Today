@@ -2,7 +2,7 @@
 import { useQuery } from '@tanstack/react-query';
 
 // * Utils
-import { getSunTime } from '@utils/api/sunTimeApi';
+import { getSunTime } from '@utils/sumTime/sunTimeApi';
 
 export const useGetSunTime = () => {
   return useQuery({

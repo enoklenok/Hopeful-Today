@@ -2,7 +2,8 @@
 import axios from 'axios';
 
 // * Utils
-import { getCurrentDate, getBaseTime } from '@utils/utils';
+import { getCurrentDate } from '@utils/@common/commonUtils';
+import { getBaseTime } from '@utils/weather/weatherUtils';
 
 const BASE_URL = 'http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0';
 const API_KEY = import.meta.env.VITE_APP_API_KEY; // 필수 - 인증키
@@ -10,9 +11,7 @@ const API_KEY = import.meta.env.VITE_APP_API_KEY; // 필수 - 인증키
 /** 초단기실황 조회 API(현재 날씨 관측) */
 export const getCurrentWeather = async () => {
   try {
-    const savedDistrict = JSON.parse(
-      localStorage.getItem('select_district') ?? 'null',
-    );
+    const savedDistrict = JSON.parse(localStorage.getItem('select_district') ?? 'null');
 
     // query params
     const params = 'getUltraSrtNcst';

@@ -35,7 +35,7 @@ const Header = () => {
   };
 
   return (
-    <header className="flex justify-between px-4 py-3">
+    <header className="flex justify-between px-4 py-3 border">
       <p className="text-gray-500">Hopeful Today</p>
       <div>
         서울시
