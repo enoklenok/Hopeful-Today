@@ -16,13 +16,26 @@ export const convertByPm10Status = (value: string | null | undefined) => {
   return '매우 나쁨';
 };
 
+type GenericStationData = {
+  stationName: string;
+  [key: string]: any;
+};
 /**
  * 배열에서 '지역(stationName)'을 찾아 반환하는 함수
  * @param obj 배열
  * @returns 조건에 맞는 첫 번째 요소 또는 null
  */
-export const findByDistrict = (obj: [], value: string) => {
-  const name = 'stationName';
+// export const findByDistrict = (obj: [], value: string) => {
+//   console.log(obj);
+//   const name = 'stationName';
 
-  return findBy(obj, name, value);
+//   return findBy(obj, name, value);
+// };
+
+
+export const findByDistrict = (
+  obj: GenericStationData[] | undefined | null,
+  value: string
+): GenericStationData | undefined => {
+  return findBy(obj, 'stationName', value);
 };

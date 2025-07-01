@@ -28,11 +28,22 @@ export const getCurrentDate = () => {
  * @param value 비교할 값
  * @returns 조건에 맞는 첫 번째 요소 또는 null
  */
-export const findBy = (obj: [], name: string, value: string) => {
-  if (!Array.isArray(obj)) {
-    return null;
-  }
+// export const findBy = (obj: [], name: string, value: string) => {
+//   if (!Array.isArray(obj)) {
+//     return null;
+//   }
 
+//   return obj.find((item) => item[name] === value);
+// };
+
+export const findBy = < T extends Record<string, string | null>, K extends keyof T>(
+  obj: T[] | null | undefined,
+  name: K,
+  value: T[K]
+): T | undefined => {
+  if (!Array.isArray(obj)) {
+    return undefined;
+  }
   return obj.find((item) => item[name] === value);
 };
 

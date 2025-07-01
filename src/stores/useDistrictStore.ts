@@ -5,7 +5,7 @@ import { create } from 'zustand';
 import { SEOUL_DISTRICTS } from '@constants/districts';
 
 interface districtState {
-  currentDistrict: string | null;
+  currentDistrict: string;
   setCurrentDistrict: (value: string) => void;
 }
 
