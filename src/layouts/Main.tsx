@@ -2,7 +2,7 @@
 import { useEffect } from 'react';
 
 // * Components
-import { TopInfo, Character, BottomInfo } from '@components';
+import { WeatherInfo, Character } from '@components';
 
 // * Hooks
 import { useGetCurrentWeather } from '@hooks/useWeahterHook';
@@ -68,10 +68,9 @@ const Main = () => {
   ]);
 
   return (
-    <main className="px-4 py-3">
-      <TopInfo />
+    <main className="h-full px-4 py-3 relative">
       <Character />
-      <BottomInfo />
+      <WeatherInfo />
     </main>
   );
 };

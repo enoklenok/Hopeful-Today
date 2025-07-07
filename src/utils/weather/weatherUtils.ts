@@ -59,7 +59,7 @@ export const convertByWeatherStatus = (value: string | null) => {
  * @param obj 배열
  * @returns 조건에 맞는 첫 번째 요소 또는 null
  */
-export const findByTemperature = (obj: Record<string, string | number | null>[] | undefined)  => {
+export const findByTemperature = (obj: Record<string, string | number | null>[] | undefined) => {
   const name = 'category';
   const value = 'T1H';
 
