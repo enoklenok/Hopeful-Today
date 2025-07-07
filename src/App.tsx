@@ -1,19 +1,24 @@
 // * Library
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
+// * Components
+import Rain from '@components/lottie/Rain';
+
 // * Layouts
-import { Header, Main, Footer } from '@layouts';
+import { Header, Main } from '@layouts';
 
 // * Styles
 import '@styles/index.css';
 
 // * Stores
 import { useSunTimeStore } from '@stores/useSunTimeStore';
+import { useWeatherStore } from '@stores/useWeatherStore';
 
 const queryClient = new QueryClient();
 
 const App = () => {
   const { isDayTime } = useSunTimeStore();
+  const { isCurrentRaining } = useWeatherStore();
 
   const bgImage = isDayTime
     ? `url('/assets/bg-day.svg')`
@@ -27,7 +32,7 @@ const App = () => {
         >
           <Header />
           <Main />
-          {/* <Footer /> */}
+          {isCurrentRaining && <Rain />}
         </div>
       </div>
     </QueryClientProvider>
