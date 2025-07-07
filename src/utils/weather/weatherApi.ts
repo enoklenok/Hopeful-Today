@@ -5,7 +5,7 @@ import axios from 'axios';
 import {
   LOCAL_STORAGE_CURRENT_DISTRICT_NX,
   LOCAL_STORAGE_CURRENT_DISTRICT_NY,
-} from '@constants/locations';
+} from '@constants/localStorage';
 // * Utils
 import { getCurrentDate } from '@utils/@common/commonUtils';
 import { getBaseTime } from '@utils/weather/weatherUtils';

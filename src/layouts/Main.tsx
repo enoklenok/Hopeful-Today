@@ -1,6 +1,9 @@
 // * React
 import { useEffect } from 'react';
 
+// * Constnats
+import { LOCAL_STORAGE_CURRENT_DAYTIME } from '@constants/localStorage';
+
 // * Components
 import { WeatherInfo, Character } from '@components';
 
@@ -19,13 +22,11 @@ import {
 } from '@utils/weather/weatherUtils';
 
 // * Stores
-// import { useDistrictStore } from '@stores/useLocationStore';
 import { usePmStore } from '@stores/usePmStore';
 import { useSunTimeStore } from '@stores/useSunTimeStore';
 import { useWeatherStore } from '@stores/useWeatherStore';
 
 const Main = () => {
-  // const { currentDistrict } = useDistrictStore();
   const { setCurrentPm10Status } = usePmStore();
   const { setIsDayTime } = useSunTimeStore();
   const { setIsCurrentRaining, setIsCurrentSnowing, setCurrentTemperature } = useWeatherStore();
@@ -36,18 +37,16 @@ const Main = () => {
 
   useEffect(() => {
     if (!isCurrentPmPending) {
-      // const findedPm10Data = findByDistrict(currentPm, currentDistrict);
       const findedPm10Data = findByDistrict(currentPm, '강남구');
       setCurrentPm10Status(convertByPm10Status(findedPm10Data?.pm10Value));
     }
-    // }, [currentDistrict, currentPm, isCurrentPmPending, setCurrentPm10Status]);
   }, [currentPm, isCurrentPmPending, setCurrentPm10Status]);
 
   useEffect(() => {
     if (!todaySunTimePending) {
-      // const { isDaytime } = parseRiseSetStatus(todaySunTime?.sunrise, todaySunTime?.sunset);
       const { isDaytime } = parseRiseSetStatus(todaySunTime?.sunrise);
       setIsDayTime(isDaytime);
+      localStorage.setItem(LOCAL_STORAGE_CURRENT_DAYTIME, isDaytime ? 'day' : 'night');
     }
   }, [todaySunTime, todaySunTimePending, setIsDayTime]);
 

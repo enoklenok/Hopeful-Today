@@ -7,8 +7,8 @@ import {
   LOCAL_STORAGE_CURRENT_DISTRICT_ID,
   LOCAL_STORAGE_CURRENT_DISTRICT_NX,
   LOCAL_STORAGE_CURRENT_DISTRICT_NY,
-  LOCATION_REGIONS,
-} from '@constants/locations';
+} from '@constants/localStorage';
+import { LOCATION_REGIONS } from '@constants/locations';
 
 /** 지역구 로컬 스토리지 - 초기 렌더링 시 init하는 훅  */
 export const useInitLocationStorage = () => {

@@ -5,8 +5,8 @@ import { create } from 'zustand';
 import {
   LOCAL_STORAGE_CURRENT_CITY_ID,
   LOCAL_STORAGE_CURRENT_DISTRICT_ID,
-  LOCATION_REGIONS,
-} from '@constants/locations';
+} from '@constants/localStorage';
+import { LOCATION_REGIONS } from '@constants/locations';
 
 // * Type
 interface City {

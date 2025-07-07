@@ -1,5 +1,5 @@
 // * React
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 // * Constants
 import {
@@ -7,8 +7,8 @@ import {
   LOCAL_STORAGE_CURRENT_DISTRICT_ID,
   LOCAL_STORAGE_CURRENT_DISTRICT_NX,
   LOCAL_STORAGE_CURRENT_DISTRICT_NY,
-  LOCATION_REGIONS,
-} from '@constants/locations';
+} from '@constants/localStorage';
+import { LOCATION_REGIONS } from '@constants/locations';
 
 // * Components
 import Combobox from '@components/Combobox';
