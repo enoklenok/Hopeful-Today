@@ -13,8 +13,8 @@ export const getSunTime = async () => {
     const location = '서울'; // 필수 - 지역
     const sumTimeUrl = `${BASE_URL}?serviceKey=${API_KEY}&locdate=${locdate}&location=${location}`;
     const { data } = await axios.get(sumTimeUrl);
-
-    return data;
+    const result = data?.response?.body?.items?.item;
+    return result;
   } catch (error) {
     console.warn(`getSunTime error : ${error?.message}`);
     throw error;

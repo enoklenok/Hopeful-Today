@@ -2,17 +2,18 @@
 import { useQuery } from '@tanstack/react-query';
 
 // * Stores
-import { useDistrictStore } from '@stores/useDistrictStore';
+import { useLocationStore } from '@stores/useLocationStore';
 
 // * Utils
 import { getCurrentWeather, getHourlyForecast, getWeeklyForecast } from '@utils/weather/weatherApi';
 
 export const useGetCurrentWeather = () => {
-  const { currentDistrict } = useDistrictStore();
+  const { currentDistrict } = useLocationStore();
 
   return useQuery({
     queryKey: ['currentWeather', currentDistrict],
     queryFn: () => getCurrentWeather(),
+    enabled: !!currentDistrict, // type : boolean
   });
 };
 export const useGetHourlyForecast = () => {

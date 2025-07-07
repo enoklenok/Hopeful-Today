@@ -1,0 +1,51 @@
+/** 현재 지역'시' id - 로컬 스토리지 키 */
+export const LOCAL_STORAGE_CURRENT_CITY_ID = 'current_city_id';
+
+/** 현재 지역'구' id - 로컬 스토리지 키 */
+export const LOCAL_STORAGE_CURRENT_DISTRICT_ID = 'current_district_id';
+
+/** 현재 지역'구' nx - 로컬 스토리지 키 */
+export const LOCAL_STORAGE_CURRENT_DISTRICT_NX = 'current_district_nx';
+
+/** 현재 지역'구' ny - 로컬 스토리지 키 */
+export const LOCAL_STORAGE_CURRENT_DISTRICT_NY = 'current_district_ny';
+
+/** 지역구 데이터 */
+export const LOCATION_REGIONS = [
+  {
+    id: 'seoul',
+    name: '서울특별시',
+    districts: [
+      { id: 'gangnam-gu', name: '강남구', nx: 61, ny: 126 },
+      { id: 'gangdong-gu', name: '강동구', nx: 62, ny: 126 },
+      { id: 'gangbuk-gu', name: '강북구', nx: 60, ny: 129 },
+      { id: 'gangseo-gu', name: '강서구', nx: 58, ny: 126 },
+      { id: 'gwanak-gu', name: '관악구', nx: 59, ny: 125 },
+      { id: 'gwangjin-gu', name: '광진구', nx: 62, ny: 127 },
+      { id: 'guro-gu', name: '구로구', nx: 58, ny: 125 },
+      { id: 'geumcheon-gu', name: '금천구', nx: 59, ny: 125 },
+      { id: 'nowon-gu', name: '노원구', nx: 61, ny: 129 },
+      { id: 'dobong-gu', name: '도봉구', nx: 61, ny: 129 },
+      { id: 'dongdaemun-gu', name: '동대문구', nx: 61, ny: 127 },
+      { id: 'dongjak-gu', name: '동작구', nx: 59, ny: 126 },
+      { id: 'mapo-gu', name: '마포구', nx: 59, ny: 127 },
+      { id: 'seodaemun-gu', name: '서대문구', nx: 59, ny: 127 },
+      { id: 'seocho-gu', name: '서초구', nx: 60, ny: 126 },
+      { id: 'seongdong-gu', name: '성동구', nx: 61, ny: 127 },
+      { id: 'seongbuk-gu', name: '성북구', nx: 61, ny: 128 },
+      { id: 'songpa-gu', name: '송파구', nx: 62, ny: 126 },
+      { id: 'yangcheon-gu', name: '양천구', nx: 58, ny: 126 },
+      { id: 'yeongdeungpo-gu', name: '영등포구', nx: 58, ny: 126 },
+      { id: 'yongsan-gu', name: '용산구', nx: 60, ny: 126 },
+      { id: 'eunpyeong-gu', name: '은평구', nx: 59, ny: 128 },
+      { id: 'jongno-gu', name: '종로구', nx: 60, ny: 127 },
+      { id: 'jung-gu', name: '중구', nx: 60, ny: 127 },
+      { id: 'jungnang-gu', name: '중랑구', nx: 62, ny: 128 },
+    ],
+  },
+  // {
+  //   id: 'busan',
+  //   name: '부산광역시',
+  //   districts: [],
+  // },
+];

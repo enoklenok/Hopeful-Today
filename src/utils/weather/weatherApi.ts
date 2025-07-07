@@ -1,6 +1,11 @@
 // * Library
 import axios from 'axios';
 
+// * Constants
+import {
+  LOCAL_STORAGE_CURRENT_DISTRICT_NX,
+  LOCAL_STORAGE_CURRENT_DISTRICT_NY,
+} from '@constants/locations';
 // * Utils
 import { getCurrentDate } from '@utils/@common/commonUtils';
 import { getBaseTime } from '@utils/weather/weatherUtils';
@@ -11,7 +16,8 @@ const API_KEY = import.meta.env.VITE_APP_API_KEY; // 필수 - 인증키
 /** 초단기실황 조회 API(현재 날씨 관측) */
 export const getCurrentWeather = async () => {
   try {
-    const savedDistrict = JSON.parse(localStorage.getItem('select_district') ?? 'null');
+    const savedDistrctNx = localStorage.getItem(LOCAL_STORAGE_CURRENT_DISTRICT_NX);
+    const savedDistrctNy = localStorage.getItem(LOCAL_STORAGE_CURRENT_DISTRICT_NY);
 
     // query params
     const params = 'getUltraSrtNcst';
@@ -19,8 +25,8 @@ export const getCurrentWeather = async () => {
     const numOfRows = 1000; // 필수 - 한 페이지 결과 수
     const base_date = getCurrentDate(); // 필수 - 발표 날짜(YYYYMMDD)
     const baes_time = getBaseTime(); // 필수 - 발표 시각(HHmm)
-    const nx = savedDistrict?.nx; // 필수 - 예보지점 X좌표
-    const ny = savedDistrict?.ny; // 필수 - 예보지점 Y좌표
+    const nx = savedDistrctNx; // 필수 - 예보지점 X좌표
+    const ny = savedDistrctNy; // 필수 - 예보지점 Y좌표
     const dataType = 'JSON'; // 옵션 - 응답 자료 형식
 
     const currentWeatherUrl = `${BASE_URL}/${params}?serviceKey=${API_KEY}&pageNo=${pageNo}&numOfRows=${numOfRows}&base_date=${base_date}&base_time=${baes_time}&nx=${nx}&ny=${ny}&dataType=${dataType}`;
