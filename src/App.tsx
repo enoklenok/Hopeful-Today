@@ -2,7 +2,7 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 // * Components
-import Rain from '@components/lottie/Rain';
+import { Rain, Snow } from '@components/lottie';
 
 // * Layouts
 import { Header, Main } from '@layouts';
@@ -18,7 +18,7 @@ const queryClient = new QueryClient();
 
 const App = () => {
   const { isDayTime } = useSunTimeStore();
-  const { isCurrentRaining } = useWeatherStore();
+  const { isCurrentRaining, isCurrentSnowing } = useWeatherStore();
 
   const bgImage = isDayTime
     ? `url('/assets/bg-day.svg')`
@@ -33,6 +33,7 @@ const App = () => {
           <Header />
           <Main />
           {isCurrentRaining && <Rain />}
+          {isCurrentSnowing && <Snow />}
         </div>
       </div>
     </QueryClientProvider>
