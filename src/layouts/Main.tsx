@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 
 // * Constnats
 import { LOCAL_STORAGE_TIME_OF_DAY } from '@constants/localStorage';
-import { TIME_OF_DAY_NIGHTTIME } from '@constants/constants';
+import { DEFAULT_TIME_OF_DAY, TIME_OF_DAY_NIGHTTIME } from '@constants/constants';
 
 // * Components
 import { WeatherInfo, Character } from '@components';
@@ -26,12 +26,13 @@ import {
 import { usePmStore } from '@stores/usePmStore';
 import { useTimeOfDayStore } from '@stores/useTimeOfDay';
 import { useWeatherStore } from '@stores/useWeatherStore';
-import { DEFAULT_TIME_OF_DAY } from '@constants/constants';
+import { useLocationStore } from '@stores/useLocationStore';
 
 const Main = () => {
   const { setCurrentPm10Status } = usePmStore();
   const { setTimeOfDay } = useTimeOfDayStore();
   const { setIsCurrentRaining, setIsCurrentSnowing, setCurrentTemperature } = useWeatherStore();
+  const { currentDistrict } = useLocationStore();
 
   const { data: currentWeather, isPending: isCurrentWeatherPending } = useGetCurrentWeather();
   const { data: todaySunTime, isPending: todaySunTimePending } = useGetSunTime();
@@ -39,7 +40,7 @@ const Main = () => {
 
   useEffect(() => {
     if (!isCurrentPmPending) {
-      const findedPm10Data = findByDistrict(currentPm, '강남구');
+      const findedPm10Data = findByDistrict(currentPm, currentDistrict?.name);
       setCurrentPm10Status(convertByPm10Status(findedPm10Data?.pm10Value));
     }
   }, [currentPm, isCurrentPmPending, setCurrentPm10Status]);
