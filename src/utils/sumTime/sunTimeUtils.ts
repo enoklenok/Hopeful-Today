@@ -1,7 +1,12 @@
+// * Library
 import dayjs from 'dayjs';
 
+// * Constants
+import { DEFAULT_TIME_OF_DAY, TIME_OF_DAY_NIGHTTIME } from '@constants/constants';
+
+// * Types
 interface RiseSetStatus {
-  isDaytime: boolean;
+  currentTimeOfDay: string;
 }
 
 /**
@@ -10,13 +15,11 @@ interface RiseSetStatus {
  * @param sunsetStr - "HHMM" 형식 문자열
  * @returns 현재 낮/밤 여부
  */
-export function parseRiseSetStatus(
+export function parseTimeOfDayStatus(
   sunriseStr: string | null | undefined,
-  // sunsetStr: string | null | undefined,
+  sunsetStr: string | null | undefined,
 ): RiseSetStatus {
   const now = dayjs();
-
-  const sunsetStr = '1947';
   const sunriseClean =
     sunriseStr?.trim() && sunriseStr.trim().length === 4 ? sunriseStr.trim() : '0600';
 
@@ -33,7 +36,10 @@ export function parseRiseSetStatus(
     .minute(Number(sunsetClean.slice(2, 4)))
     .second(0);
 
-  const isDaytime = now.isAfter(sunriseTime) && now.isBefore(sunsetTime);
+  const currentTimeOfDay =
+    now.isAfter(sunriseTime) && now.isBefore(sunsetTime)
+      ? DEFAULT_TIME_OF_DAY
+      : TIME_OF_DAY_NIGHTTIME;
 
-  return { isDaytime };
+  return { currentTimeOfDay };
 }

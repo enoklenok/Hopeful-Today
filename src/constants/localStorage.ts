@@ -11,4 +11,4 @@ export const LOCAL_STORAGE_CURRENT_DISTRICT_NX = 'current_district_nx';
 export const LOCAL_STORAGE_CURRENT_DISTRICT_NY = 'current_district_ny';
 
 /** 현재 낮/밤 여부 - 로컬 스토리지 키 */
-export const LOCAL_STORAGE_CURRENT_DAYTIME = 'current_daytime';
+export const LOCAL_STORAGE_TIME_OF_DAY = 'time_of_day';

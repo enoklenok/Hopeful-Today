@@ -9,8 +9,11 @@ import {
 } from '@headlessui/react';
 import * as Icon from '@heroicons/react/20/solid';
 
+// * Constants
+import { DEFAULT_TIME_OF_DAY } from '@constants/constants';
+
 // * Stores
-import { useSunTimeStore } from '@stores/useSunTimeStore';
+import { useTimeOfDayStore } from '@stores/useTimeOfDay';
 
 // * Type
 interface City {
@@ -46,7 +49,7 @@ const Combobox = ({
   setQuery,
   query,
 }: ComboboxProps) => {
-  const { isDayTime } = useSunTimeStore();
+  const { timeOfDay } = useTimeOfDayStore();
 
   const handleClickQueryReset = () => {
     setQuery('');
@@ -68,7 +71,7 @@ const Combobox = ({
     'shadow-lg',
     'text-xl',
     'truncate',
-    isDayTime ? 'bg-white/10 text-black' : 'bg-black/30 text-gray-200',
+    timeOfDay === DEFAULT_TIME_OF_DAY ? 'bg-white/10 text-black' : 'bg-black/30 text-gray-200',
   );
 
   const comboOptionsClassName = clsx(
@@ -82,7 +85,7 @@ const Combobox = ({
     'backdrop-blur-sm',
     'shadow-lg',
     'text-xl',
-    isDayTime ? 'bg-white/30' : 'bg-black/30 text-gray-300',
+    timeOfDay === DEFAULT_TIME_OF_DAY ? 'bg-white/30' : 'bg-black/30 text-gray-300',
   );
 
   const comboOptionClassName = clsx(
@@ -93,7 +96,7 @@ const Combobox = ({
     'py-3',
     'cursor-pointer',
     'data-selected:font-bold',
-    isDayTime
+    timeOfDay === DEFAULT_TIME_OF_DAY
       ? 'data-active:bg-gray-700/10 data-selected:bg-gray-700/15 data-selected:text-black'
       : 'data-active:bg-white/10 data-selected:bg-white/20 data-selected:text-gray-200',
   );
@@ -102,7 +105,7 @@ const Combobox = ({
     'select-none',
     'px-4',
     'py-3',
-    isDayTime ? 'text-black' : 'text-white',
+    timeOfDay === DEFAULT_TIME_OF_DAY ? 'text-black' : 'text-white',
   );
 
   return (
@@ -124,13 +127,15 @@ const Combobox = ({
           {(query || selected) && (
             <div className="absolute flex items-center h-full inset-y-0 right-8 px-2.5">
               <button className="cursor-pointer" onClick={handleClickQueryReset}>
-                <Icon.XMarkIcon className={`w-6 h-6 ${isDayTime ? 'text-black' : 'text-white'} `} />
+                <Icon.XMarkIcon
+                  className={`w-6 h-6 ${timeOfDay === DEFAULT_TIME_OF_DAY ? 'text-black' : 'text-white'} `}
+                />
               </button>
             </div>
           )}
           <HU_ComboboxButton className="absolute inset-y-0 right-0 px-2.5 cursor-pointer">
             <Icon.ChevronDownIcon
-              className={`w-6 h-6 ${isDayTime ? 'text-black' : 'text-white'} `}
+              className={`w-6 h-6 ${timeOfDay === DEFAULT_TIME_OF_DAY ? 'text-black' : 'text-white'} `}
             />
           </HU_ComboboxButton>
         </div>

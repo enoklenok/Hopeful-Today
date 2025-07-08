@@ -2,7 +2,8 @@
 import { useEffect } from 'react';
 
 // * Constnats
-import { LOCAL_STORAGE_CURRENT_DAYTIME } from '@constants/localStorage';
+import { LOCAL_STORAGE_TIME_OF_DAY } from '@constants/localStorage';
+import { TIME_OF_DAY_NIGHTTIME } from '@constants/constants';
 
 // * Components
 import { WeatherInfo, Character } from '@components';
@@ -14,7 +15,7 @@ import { useGetPm } from '@hooks/usePmHook';
 
 // * Utils
 import { convertByPm10Status, findByDistrict } from '@utils/pm/pmUtils';
-import { parseRiseSetStatus } from '@utils/sumTime/sunTimeUtils';
+import { parseTimeOfDayStatus } from '@utils/sumTime/sunTimeUtils';
 import {
   convertByPrecipitationStatus,
   findByPrecipitation,
@@ -23,12 +24,13 @@ import {
 
 // * Stores
 import { usePmStore } from '@stores/usePmStore';
-import { useSunTimeStore } from '@stores/useSunTimeStore';
+import { useTimeOfDayStore } from '@stores/useTimeOfDay';
 import { useWeatherStore } from '@stores/useWeatherStore';
+import { DEFAULT_TIME_OF_DAY } from '@constants/constants';
 
 const Main = () => {
   const { setCurrentPm10Status } = usePmStore();
-  const { setIsDayTime } = useSunTimeStore();
+  const { setTimeOfDay } = useTimeOfDayStore();
   const { setIsCurrentRaining, setIsCurrentSnowing, setCurrentTemperature } = useWeatherStore();
 
   const { data: currentWeather, isPending: isCurrentWeatherPending } = useGetCurrentWeather();
@@ -44,11 +46,17 @@ const Main = () => {
 
   useEffect(() => {
     if (!todaySunTimePending) {
-      const { isDaytime } = parseRiseSetStatus(todaySunTime?.sunrise);
-      setIsDayTime(isDaytime);
-      localStorage.setItem(LOCAL_STORAGE_CURRENT_DAYTIME, isDaytime ? 'day' : 'night');
+      const { currentTimeOfDay } = parseTimeOfDayStatus(
+        todaySunTime?.sunrise,
+        todaySunTime?.sunset,
+      );
+      setTimeOfDay(currentTimeOfDay);
+      localStorage.setItem(
+        LOCAL_STORAGE_TIME_OF_DAY,
+        currentTimeOfDay === DEFAULT_TIME_OF_DAY ? currentTimeOfDay : TIME_OF_DAY_NIGHTTIME,
+      );
     }
-  }, [todaySunTime, todaySunTimePending, setIsDayTime]);
+  }, [todaySunTime, todaySunTimePending]);
 
   useEffect(() => {
     if (!isCurrentWeatherPending) {

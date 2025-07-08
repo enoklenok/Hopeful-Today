@@ -1,15 +1,22 @@
 // * Library
 import clsx from 'clsx';
 
+// * Constants
+import { DEFAULT_TIME_OF_DAY } from '@constants/constants';
+
 // * Stores
-import { useSunTimeStore } from '@stores/useSunTimeStore';
+import { useTimeOfDayStore } from '@stores/useTimeOfDay';
 import { usePmStore } from '@stores/usePmStore';
 
 const Pm10Status = () => {
   const { currentPm10Status } = usePmStore();
-  const { isDayTime } = useSunTimeStore();
+  const { timeOfDay } = useTimeOfDayStore();
 
-  const pm10ClassName = clsx('text-2xl', 'font-semibold', isDayTime ? 'text-black' : 'text-white');
+  const pm10ClassName = clsx(
+    'text-2xl',
+    'font-semibold',
+    timeOfDay === DEFAULT_TIME_OF_DAY ? 'text-black' : 'text-white',
+  );
   return <div className={pm10ClassName}>미세먼지 {currentPm10Status}</div>;
 };
 

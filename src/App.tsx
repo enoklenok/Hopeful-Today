@@ -1,6 +1,9 @@
 // * Library
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
+// * Constants
+import { DEFAULT_TIME_OF_DAY } from '@constants/constants';
+
 // * Components
 import { Rain, Snow } from '@components/lottie';
 
@@ -11,18 +14,19 @@ import { Header, Main } from '@layouts';
 import '@styles/index.css';
 
 // * Stores
-import { useSunTimeStore } from '@stores/useSunTimeStore';
+import { useTimeOfDayStore } from '@stores/useTimeOfDay';
 import { useWeatherStore } from '@stores/useWeatherStore';
 
 const queryClient = new QueryClient();
 
 const App = () => {
-  const { isDayTime } = useSunTimeStore();
+  const { timeOfDay } = useTimeOfDayStore();
   const { isCurrentRaining, isCurrentSnowing } = useWeatherStore();
 
-  const bgImage = isDayTime
-    ? `url('/assets/bg-day.svg')`
-    : `url('/assets/bg-night-items.svg'), url('/assets/bg-night-overlay.png')`;
+  const bgImage =
+    timeOfDay === DEFAULT_TIME_OF_DAY
+      ? `url('/assets/bg-day.svg')`
+      : `url('/assets/bg-night-items.svg'), url('/assets/bg-night-overlay.png')`;
   return (
     <QueryClientProvider client={queryClient}>
       <div id="container" className="flex justify-center">
