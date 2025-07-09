@@ -1,6 +1,9 @@
 // * Library
 import dayjs from 'dayjs';
 
+// * Constants
+import { TIME_OF_DAY_DAYTIME } from '@constants/constants';
+
 // * Utils
 import { convertByNumberType, findBy } from '@utils/@common/commonUtils';
 
@@ -93,4 +96,24 @@ export const getBaseTime = () => {
   }
 
   return `${String(baseHour).padStart(2, '0')}00`;
+};
+
+export const getBgImageByTimeAndTemperature = (timeOfDay: string, temperature: string | null) => {
+  const temperatureNumber = convertByNumberType(temperature);
+
+  // 낮
+  if (timeOfDay === TIME_OF_DAY_DAYTIME) {
+    if (temperatureNumber >= 20) {
+      return 'url(/assets/bg-daytime-heatWave.png)';
+    } else {
+      return 'url(/assets/bg-daytime.png)';
+    }
+    // 밤
+  } else {
+    if (temperatureNumber >= 20) {
+      return 'url(/assets/bg-nighttime-heatWave.png)';
+    } else {
+      return 'url(/assets/bg-nighttime.png)';
+    }
+  }
 };

@@ -17,21 +17,22 @@ import '@styles/index.css';
 import { useTimeOfDayStore } from '@stores/useTimeOfDay';
 import { useWeatherStore } from '@stores/useWeatherStore';
 
+// * Utils
+import { getBgImageByTimeAndTemperature } from '@utils/weather/weatherUtils';
+
 const queryClient = new QueryClient();
 
 const App = () => {
   const { timeOfDay } = useTimeOfDayStore();
-  const { isCurrentRaining, isCurrentSnowing } = useWeatherStore();
+  const { currentTemperature, isCurrentRaining, isCurrentSnowing } = useWeatherStore();
 
-  const bgImage =
-    timeOfDay === DEFAULT_TIME_OF_DAY
-      ? `url('/assets/bg-day.svg')`
-      : `url('/assets/bg-night-items.svg'), url('/assets/bg-night-overlay.png')`;
+  const bgImage = getBgImageByTimeAndTemperature(timeOfDay, currentTemperature);
+  console.log(bgImage);
   return (
     <QueryClientProvider client={queryClient}>
       <div id="container" className="flex justify-center">
         <div
-          className="flex flex-col w-screen max-w-[500px] min-h-[100dvh] bg-cover bg-top"
+          className="flex flex-col w-screen max-w-[500px] min-h-[100dvh] bg-cover bg-left"
           style={{ backgroundImage: bgImage }}
         >
           <Header />

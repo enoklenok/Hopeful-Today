@@ -23,7 +23,7 @@ type GenericStationData = {
 
 export const findByDistrict = (
   obj: GenericStationData[] | undefined | null,
-  value: string,
+  value: string | null | undefined,
 ): GenericStationData | undefined => {
   return findBy(obj, 'stationName', value);
 };
