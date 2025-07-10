@@ -1,9 +1,6 @@
 // * Library
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-// * Constants
-import { DEFAULT_TIME_OF_DAY } from '@constants/constants';
-
 // * Components
 import { Rain, Snow } from '@components/lottie';
 
@@ -27,7 +24,6 @@ const App = () => {
   const { currentTemperature, isCurrentRaining, isCurrentSnowing } = useWeatherStore();
 
   const bgImage = getBgImageByTimeAndTemperature(timeOfDay, currentTemperature);
-  console.log(bgImage);
   return (
     <QueryClientProvider client={queryClient}>
       <div id="container" className="flex justify-center">

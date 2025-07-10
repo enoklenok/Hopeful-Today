@@ -77,6 +77,7 @@ const Header = () => {
   return (
     <header className="flex justify-end items-center h-20 px-4 py-3">
       <Combobox
+        isResetButton={false}
         onChange={handleChangeCurrentCity}
         onReset={handleResetCurrentCity}
         options={LOCATION_REGIONS}
@@ -86,6 +87,7 @@ const Header = () => {
         query={cityQuery}
       />
       <Combobox
+        isResetButton={true}
         onChange={handleChangeCurrentDistrict}
         onReset={handleResetCurrentDistrcit}
         options={currentCity?.districts ?? []}

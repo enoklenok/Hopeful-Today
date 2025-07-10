@@ -32,15 +32,19 @@ interface District {
 type Options = City | District;
 
 interface ComboboxProps {
+  isResetButton: boolean;
   onChange: (value: Options) => void;
-  // onReset : ;
+  onReset: () => void;
   options: Options[];
   placeholder?: string;
   selected: Options | null;
+  setQuery: (value: string) => void;
+  query: string;
 }
 
 /** 검색이 가능한 Select 컴포넌트 */
 const Combobox = ({
+  isResetButton,
   onChange,
   onReset,
   options,
@@ -64,7 +68,7 @@ const Combobox = ({
     'w-full',
     'px-3',
     'py-2',
-    'pr-20',
+    isResetButton ? 'pr-20' : 'pr-10',
     'rounded-xl',
     'backdrop-blur-sm',
     'focus:outline-none',
@@ -123,8 +127,8 @@ const Combobox = ({
             placeholder={placeholder}
             className={inputClassName}
           />
-          {/* 버튼 */}
-          {(query || selected) && (
+          {/* 검색 리셋 버튼 */}
+          {isResetButton && (query || selected) && (
             <div className="absolute flex items-center h-full inset-y-0 right-8 px-2.5">
               <button className="cursor-pointer" onClick={handleClickQueryReset}>
                 <Icon.XMarkIcon
@@ -133,6 +137,7 @@ const Combobox = ({
               </button>
             </div>
           )}
+          {/* 드로받운 버튼 */}
           <HU_ComboboxButton className="absolute inset-y-0 right-0 px-2.5 cursor-pointer">
             <Icon.ChevronDownIcon
               className={`w-6 h-6 ${timeOfDay === DEFAULT_TIME_OF_DAY ? 'text-black' : 'text-white'} `}
