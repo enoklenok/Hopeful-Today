@@ -38,6 +38,7 @@ const Main = () => {
   const { data: todaySunTime, isPending: todaySunTimePending } = useGetSunTime();
   const { data: currentPm, isPending: isCurrentPmPending } = useGetPm();
 
+  // 미세먼지
   useEffect(() => {
     if (!isCurrentPmPending) {
       const findedPm10Data = findByDistrict(currentPm, currentDistrict?.name);
@@ -45,6 +46,7 @@ const Main = () => {
     }
   }, [currentPm, isCurrentPmPending, setCurrentPm10Status]);
 
+  // 낮/밤 여부
   useEffect(() => {
     if (!todaySunTimePending) {
       const { currentTimeOfDay } = parseTimeOfDayStatus(
@@ -59,6 +61,7 @@ const Main = () => {
     }
   }, [todaySunTime, todaySunTimePending]);
 
+  // 날씨 기온 및 강수량
   useEffect(() => {
     if (!isCurrentWeatherPending) {
       const findedPrecipitation = findByPrecipitation(currentWeather)?.obsrValue;

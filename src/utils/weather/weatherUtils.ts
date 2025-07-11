@@ -3,6 +3,7 @@ import dayjs from 'dayjs';
 
 // * Constants
 import { TIME_OF_DAY_DAYTIME } from '@constants/constants';
+import { LOCAL_STORAGE_CURRENT_WEATHER_STATUS } from '@constants/localStorage';
 
 // * Utils
 import { convertByNumberType, findBy } from '@utils/@common/commonUtils';
@@ -104,16 +105,16 @@ export const getBgImageByTimeAndTemperature = (timeOfDay: string, temperature: s
   // 낮
   if (timeOfDay === TIME_OF_DAY_DAYTIME) {
     if (temperatureNumber >= 20) {
-      return 'url(/assets/bg-daytime-heatWave.png)';
+      return 'url(/assets/bg/bg-daytime-heatWave-over.png)';
     } else {
-      return 'url(/assets/bg-daytime.png)';
+      return 'url(/assets/bg/bg-daytime.png)';
     }
     // 밤
   } else {
     if (temperatureNumber >= 20) {
-      return 'url(/assets/bg-nighttime-heatWave.png)';
+      return 'url(/assets/bg/bg-nighttime-heatWave.png)';
     } else {
-      return 'url(/assets/bg-nighttime.png)';
+      return 'url(/assets/bg/bg-nighttime.png)';
     }
   }
 };

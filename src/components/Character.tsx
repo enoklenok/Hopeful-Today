@@ -4,11 +4,17 @@ const Character = () => {
     <section className="flex absolute inset-0 z-0">
       <svg className="w-full h-full" viewBox="0 0 300 300" preserveAspectRatio="xMidYMid meet">
         <image
-          href="/assets/lovebugman.svg"
+          href="/assets/lovebugman/lovebugman-heatWave.svg"
           width="100%"
           height="100%"
           preserveAspectRatio="xMidYMid meet"
         />
+        {/* <image
+          href="/assets/lovebugman/lovebugman-mask.svg"
+          width="100%"
+          height="100%"
+          preserveAspectRatio="xMidYMid meet"
+        /> */}
       </svg>
     </section>
   );

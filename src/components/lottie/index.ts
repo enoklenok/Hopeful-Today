@@ -1,2 +1,2 @@
-export { default as Rain } from '@components/lottie/Rain';
-export { default as Snow } from '@components/lottie/Snow';
+export { default as RainAnimation } from '@components/lottie/RainAnimation';
+export { default as SnowAnimation } from '@components/lottie/SnowAnimation';
