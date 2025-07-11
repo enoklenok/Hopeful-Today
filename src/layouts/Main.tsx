@@ -68,7 +68,7 @@ const Main = () => {
       const { isRaining, isSnowing } = convertByPrecipitationStatus(findedPrecipitation);
       setIsCurrentRaining(isRaining);
       setIsCurrentSnowing(isSnowing);
-      setCurrentTemperature(findByTemperature(currentWeather)?.obsrValue ?? '');
+      setCurrentTemperature(Number(findByTemperature(currentWeather)?.obsrValue) ?? 0);
     }
   }, [
     currentWeather,

@@ -2,7 +2,7 @@
 import { create } from 'zustand';
 
 interface WeatherState {
-  currentTemperature: string | null; // 기온
+  currentTemperature: number | null; // 기온
   isCurrentTemperaturePending: boolean | null;
   isCurrentTemperatureError: boolean | null;
   setCurrentTemperature: (value: string) => void;
