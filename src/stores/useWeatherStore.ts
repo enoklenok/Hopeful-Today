@@ -5,7 +5,7 @@ interface WeatherState {
   currentTemperature: number | null; // 기온
   isCurrentTemperaturePending: boolean | null;
   isCurrentTemperatureError: boolean | null;
-  setCurrentTemperature: (value: string) => void;
+  setCurrentTemperature: (value: number) => void;
 
   isCurrentRaining: boolean | null;
   isCurrentSnowing: boolean | null;

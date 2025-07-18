@@ -1,9 +1,6 @@
 // * Library
 import dayjs from 'dayjs';
 
-// * Constants
-import { TIME_OF_DAY_DAYTIME } from '@constants/constants';
-
 // * Utils
 import { convertByNumberType, findBy } from '@utils/@common/commonUtils';
 

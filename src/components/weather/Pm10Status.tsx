@@ -1,5 +1,6 @@
 // * Library
 import clsx from 'clsx';
+import SmileIcon from '@assets/smile.svg?react';
 
 // * Constants
 import { DEFAULT_TIME_OF_DAY } from '@constants/constants';
@@ -14,10 +15,15 @@ const Pm10Status = () => {
 
   const pm10ClassName = clsx(
     'text-2xl',
-    'font-semibold',
+    'font-bold',
     timeOfDay === DEFAULT_TIME_OF_DAY ? 'text-black' : 'text-white',
   );
-  return <div className={pm10ClassName}>미세먼지 {currentPm10Status}</div>;
+  return (
+    <div className="flex w-fit items-center gap-2 bg-red-500/30 rounded-md backdrop-blur-xs px-2 py-1">
+      <SmileIcon className="w-7 h-7" />
+      <div className={pm10ClassName}>미세먼지 {currentPm10Status}</div>
+    </div>
+  );
 };
 
 export default Pm10Status;

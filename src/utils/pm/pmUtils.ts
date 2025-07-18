@@ -13,7 +13,7 @@ export const convertByPm10Status = (value: string | null | undefined) => {
   if (convertedValue <= 30) return '좋음';
   if (convertedValue <= 80) return '보통';
   if (convertedValue <= 150) return '나쁨';
-  return '매우 나쁨';
+  return '최악';
 };
 
 type GenericStationData = {

@@ -68,10 +68,7 @@ const useBackgroundImage = () => {
       }
       // 밤
     } else {
-      if (currentTemperature >= 30) {
-        bgImage = nighttimeHeatWaveImage;
-        localStorage.setItem(LOCAL_STORAGE_CURRENT_WEATHER_STATUS, 'nighttime-heat-wave');
-      } else if (currentTemperature >= 20) {
+      if (currentTemperature >= 20) {
         bgImage = nighttimeHeatImage;
         localStorage.setItem(LOCAL_STORAGE_CURRENT_WEATHER_STATUS, 'nighttime-heat');
       } else {

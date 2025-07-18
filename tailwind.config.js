@@ -12,5 +12,5 @@ export default defineConfig({
       spacing: {},
     },
   },
-  plugins: [],
+  plugins: [require('@designbycode/tailwindcss-text-stroke')],
 });

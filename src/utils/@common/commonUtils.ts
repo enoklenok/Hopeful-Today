@@ -13,7 +13,7 @@ export const convertByNumberType = (value: string | number | null | undefined) =
   if (!value) {
     return null;
   }
-  const parsedValue = parseInt(value);
+  const parsedValue = Number(value);
   return isNaN(parsedValue) ? null : parsedValue;
 };
 
@@ -36,10 +36,10 @@ export const getCurrentDate = () => {
 //   return obj.find((item) => item[name] === value);
 // };
 
-export const findBy = < T extends Record<string, string | null>, K extends keyof T>(
+export const findBy = <T extends Record<string, string | null>, K extends keyof T>(
   obj: T[] | null | undefined,
   name: K,
-  value: T[K]
+  value: T[K],
 ): T | undefined => {
   if (!Array.isArray(obj)) {
     return undefined;
